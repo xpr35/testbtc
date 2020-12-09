@@ -3,6 +3,6 @@ spring:
         change-log: classpath:liquibase/changelog.yml
     datasource:
         driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/btc
+        url: jdbc:postgresql://database:5432/btc
         username: postgres
         password: test

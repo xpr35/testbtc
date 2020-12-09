@@ -42,8 +42,6 @@ class WalletServiceTest {
                 amount = BigDecimal.ONE
         )
         whenever(recordRepository.save(any<RecordEntity>())).thenReturn(entityWithId)
-        whenever(recordRepository.getByDatetime(DATETIME_ONE)).thenReturn(null)
-        whenever(recordRepository.getFirstByOrderByDatetimeDesc()).thenReturn(null)
         val response = walletService.saveRecord(record)
         assertEquals(record, response)
     }
@@ -66,7 +64,6 @@ class WalletServiceTest {
         )
         whenever(recordRepository.getByDatetime(DATETIME_TWO.truncatedTo(ChronoUnit.HOURS)))
                 .thenReturn(entityWithIdPreviousThisHour)
-        whenever(recordRepository.getFirstByOrderByDatetimeDesc()).thenReturn(null)
         whenever(recordRepository.save(any<RecordEntity>())).thenReturn(entityWithIdCurrentThisHour)
         val response = walletService.saveRecord(record)
         assertEquals(record, response)
@@ -88,8 +85,6 @@ class WalletServiceTest {
                 datetime = DATETIME_THREE,
                 amount = BigDecimal.valueOf(2L)
         )
-        whenever(recordRepository.getByDatetime(DATETIME_TWO.truncatedTo(ChronoUnit.HOURS)))
-                .thenReturn(null)
         whenever(recordRepository.getFirstByOrderByDatetimeDesc()).thenReturn(entityWithIdPreviousHour)
         whenever(recordRepository.save(any<RecordEntity>())).thenReturn(entityWithIdCurrentThisHour)
         val response = walletService.saveRecord(record)
