@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "cfe92480-9bbd-4041-a3b0-a12682cfbb4c",
+		"name": "test-postman-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saveRecord",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"datetime\": \"2020-12-02T10:40:00+07:00\",\n    \"amount\": 25.2\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/saveRecord",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"saveRecord"
+					]
+				},
+				"description": "test"
+			},
+			"response": []
+		},
+		{
+			"name": "getRecord",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDatetime\": \"2020-12-01T00:00:00+07:00\",\n    \"endDatetime\": \"2020-12-03T20:00:00+07:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getRecord",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getRecord"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
