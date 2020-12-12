@@ -5,12 +5,16 @@ import com.task.btc.persistence.entity.RecordEntity
 import com.task.btc.dto.TimeDurationDto
 import com.task.btc.persistence.repository.RecordRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Isolation
+import org.springframework.transaction.annotation.Transactional
 import java.time.temporal.ChronoUnit
 
 @Service
 class WalletService(
         private val recordRepository: RecordRepository
 ) {
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     fun saveRecord(recordDto: RecordDto): RecordDto? =
             recordRepository.getByDatetime(
                     recordDto.datetime.truncatedTo(ChronoUnit.HOURS)
